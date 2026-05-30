@@ -1,5 +1,8 @@
 <?php
 
+use app\services\contracts\EvenSumCalculatorInterface;
+use app\services\EvenSumCalculator;
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
@@ -16,6 +19,9 @@ $config = [
                 'viewPath' => '@app/mail',
             ],
         ],
+        'definitions' => [
+            EvenSumCalculatorInterface::class => EvenSumCalculator::class,
+        ],
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -25,6 +31,9 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'id6pKlqdUTjzcxItoHIMEScdNE5qlmZL',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
         ],
         'cache' => [
             'class' => \yii\caching\FileCache::class,
@@ -47,14 +56,14 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'POST api/even-sum' => 'even-sum/index',
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];
