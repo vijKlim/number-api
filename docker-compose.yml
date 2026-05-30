@@ -1,0 +1,9 @@
+services:
+  app:
+    image: yiisoftware/yii2-php:8.3-apache
+    container_name: number-api
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "8000:80"
