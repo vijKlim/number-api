@@ -8,5 +8,4 @@ start:
 
 test:
 	docker compose exec app vendor/bin/codecept build
-	docker compose exec app vendor/bin/codecept run Unit Models/EvenSumRequestFormTest.php
-	docker compose exec app vendor/bin/codecept run tests/Unit/Services/EvenSumCalculatorTest.php
+	docker compose exec app vendor/bin/codecept run Unit
